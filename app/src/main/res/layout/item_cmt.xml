@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/facebook3">
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="Cao Tú Ân"
+            android:text="Thái Bá Hùng"
             android:textStyle="bold"
             android:textSize="18dp"
           />
@@ -68,6 +69,7 @@
             app:layout_constraintTop_toBottomOf="@id/constraint"
             app:layout_constraintLeft_toRightOf="@+id/imgAvatar"
             android:text="10 phút"
+            android:textColor="@color/facebook2"
             android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tvXoa"
@@ -76,6 +78,7 @@
             app:layout_constraintTop_toBottomOf="@id/constraint"
             app:layout_constraintLeft_toRightOf="@+id/tvTime"
             android:text="Xóa"
+            android:textColor="@color/facebook2"
             android:visibility="invisible"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"/>
@@ -89,6 +92,7 @@
             app:layout_constraintTop_toBottomOf="@id/constraint"
             app:layout_constraintLeft_toRightOf="@+id/tvXoa"
             android:text="Chỉnh sửa"
+            android:textColor="@color/facebook2"
             android:layout_marginLeft="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

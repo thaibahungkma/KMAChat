@@ -167,11 +167,8 @@ public class UsersFragment extends Fragment {
         menu.findItem(R.id.action_add_participant).setVisible(false);
         menu.findItem(R.id.action_group_info).setVisible(false);
         //check admin to show create Group
-        String uidAdmin = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String uidPdt ="ljJm82KDT3fVdPFqwzQRWq7EfTC2";
-        if (!uidAdmin.equals(uidPdt)){
-            menu.findItem(R.id.action_create_group).setVisible(false);
-        }
+        menu.findItem(R.id.action_create_group).setVisible(false);
+
 //      action search
         MenuItem item = menu.findItem(R.id.action_search);
         androidx.appcompat.widget.SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);

@@ -9,7 +9,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.chatkma.fragment.ChatListFragment;
 import com.example.chatkma.fragment.GroupChatsFragment;
 import com.example.chatkma.fragment.HomeFragment;
 import com.example.chatkma.fragment.ProfileFragment;
@@ -68,13 +67,6 @@ public class DashboardActivity extends AppCompatActivity {
                         FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
                         ft3.replace(R.id.content, fragment3,"");
                         ft3.commit();
-                        break;
-                    case R.id.nav_chat:
-                        actionBar.setTitle("Chats");
-                        ChatListFragment fragment4 = new ChatListFragment();
-                        FragmentTransaction ft4 = getSupportFragmentManager().beginTransaction();
-                        ft4.replace(R.id.content, fragment4,"");
-                        ft4.commit();
                         break;
                     case R.id.nav_group:
                         actionBar.setTitle("Nhóm Chat");

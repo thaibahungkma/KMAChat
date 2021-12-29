@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CmtActivity">
+    tools:context=".CmtActivity"
+    android:background="@color/facebook4">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_above="@id/chatLayout"
-        android:layout_marginBottom="0dp">
+        android:layout_marginBottom="0dp"
+        android:background="@color/facebook4">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
             <LinearLayout
                 android:id="@+id/layout"
@@ -193,7 +196,8 @@
                 android:id="@+id/rcv_cmt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/layout" />
+                android:layout_below="@+id/layout"
+                android:background="@color/white" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 <LinearLayout
@@ -240,6 +244,7 @@
             android:background="@null"
             android:textColor="@color/black"
             android:hint="Nhập bình luận..."
+            android:textColorHint="@color/xam"
             android:padding="15dp"
             android:inputType="textCapSentences|textMultiLine"
             />
