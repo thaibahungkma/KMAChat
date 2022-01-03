@@ -36,6 +36,7 @@ public class GroupChatsFragment extends Fragment {
 
     private RecyclerView groupsRv;
     private FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
     private ArrayList<ModelGroupChatList> groupChatLists;
     private AdapterGroupChatList adapterGroupChatList;
@@ -51,6 +52,7 @@ public class GroupChatsFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_group_chats, container, false);
 
         groupsRv= view.findViewById(R.id.groupsRv);
+        user=FirebaseAuth.getInstance().getCurrentUser();
 
         firebaseAuth = FirebaseAuth.getInstance();
         loadGroupChatList();
@@ -130,12 +132,25 @@ public class GroupChatsFragment extends Fragment {
         menu.findItem(R.id.action_add_post).setVisible(false);
         menu.findItem(R.id.action_add_participant).setVisible(false);
         menu.findItem(R.id.action_group_info).setVisible(false);
-        //check admin to show create Group
-        String uidAdmin = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String uidPdt ="ljJm82KDT3fVdPFqwzQRWq7EfTC2";
-        if (!uidAdmin.equals(uidPdt)){
-            menu.findItem(R.id.action_create_group).setVisible(false);
-        }
+//        //check admin to show create Group
+//        String uidAdmin = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        String uidPdt ="ljJm82KDT3fVdPFqwzQRWq7EfTC2";
+//        if (!uidAdmin.equals(uidPdt)){
+//            menu.findItem(R.id.action_create_group).setVisible(false);
+//        }
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()).child("Admin");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getValue()==null) menu.findItem(R.id.action_add_post).setVisible(false);
+                else menu.findItem(R.id.action_create_group).setVisible(true);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 //      action search
         MenuItem item = menu.findItem(R.id.action_search);
         androidx.appcompat.widget.SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);

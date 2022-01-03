@@ -93,9 +93,29 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
 
 
 
-        //set user dp
+//        //set user dp
         try {
-            Picasso.get().load(uDp).placeholder(R.drawable.ic_face_post).into(myHolder.uPictureIv);
+            DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("image");
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String image= (String) snapshot.getValue();
+                    if(image.equals("")){
+                        Picasso.get().load(uDp).placeholder(R.drawable.ic_face_post).into(myHolder.uPictureIv);
+
+                    }else {
+                        Picasso.get().load(image).into(myHolder.uPictureIv);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Picasso.get().load(uDp).placeholder(R.drawable.ic_face_post).into(myHolder.uPictureIv);
+
+                }
+            });
+
         }
         catch (Exception e){
 
